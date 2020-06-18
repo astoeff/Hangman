@@ -1,17 +1,18 @@
-from constants import WELCOME_TEXT, WELCOME_TEXT_COLOR, CONTINUE_AND_EXIT_COMMAND_TEXT, ENTER_KEY, ESCAPE_KEY
-from termcolor import colored
-from utils import clear_screen
-from help_library import get_character
-import os
+from constants import (WELCOME_TEXT, CONTINUE_AND_EXIT_COMMAND_TEXT,
+                       ENTER_KEY, ESCAPE_KEY, CHOOSE_PLAYER_TYPE_TEXT, EXIT_COMMAND_TEXT,
+                       ONE_KEY, TWO_KEY)
+from utils import get_character_from_console_until_key_in_list_pressed, print_heading_with_content
+
+
+class ApplicationViews:
+    def welcome(self):
+        print_heading_with_content(WELCOME_TEXT, CONTINUE_AND_EXIT_COMMAND_TEXT)
+        return get_character_from_console_until_key_in_list_pressed([ENTER_KEY, ESCAPE_KEY])
+
+    def choose_player_type(self):
+        print_heading_with_content(CHOOSE_PLAYER_TYPE_TEXT, EXIT_COMMAND_TEXT)
+        return get_character_from_console_until_key_in_list_pressed([ONE_KEY, TWO_KEY, ESCAPE_KEY])
 
 
 class PlayerViews:
-    def startView(self):
-        clear_screen()
-        print(colored(WELCOME_TEXT, WELCOME_TEXT_COLOR).center(os.get_terminal_size().columns))
-        print('\n')
-        print(CONTINUE_AND_EXIT_COMMAND_TEXT)
-        pressed_key = get_character()
-        while pressed_key != ENTER_KEY and pressed_key != ESCAPE_KEY:
-            pressed_key = get_character()
-        return pressed_key
+    pass
