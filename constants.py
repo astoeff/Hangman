@@ -8,3 +8,6 @@ ENTER_KEY = b'\n'
 ESCAPE_KEY = b'\x1b'
 ONE_KEY = b'1'
 TWO_KEY = b'2'
+MASK_SYMBOL = '_'
+
+WORDS = ['word', 'hangman', 'clean', 'code']

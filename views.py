@@ -13,6 +13,5 @@ class ApplicationViews:
         print_heading_with_content(CHOOSE_PLAYER_TYPE_TEXT, EXIT_COMMAND_TEXT)
         return get_character_from_console_until_key_in_list_pressed([ONE_KEY, TWO_KEY, ESCAPE_KEY])
 
-
-class PlayerViews:
-    pass
+    def player_move(self, word_masked, lives=5):
+        print_heading_with_content(word_masked, f'Lives = {lives}')

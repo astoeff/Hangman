@@ -1,6 +1,5 @@
-from constants import ESCAPE_KEY, ONE_KEY, WORDS
+from constants import ESCAPE_KEY, ONE_KEY
 from models import Player, PremiumPlayer
-import random
 
 
 class ApplicationControllers:
@@ -10,16 +9,3 @@ class ApplicationControllers:
 
     def create_player_instance(self, number_representing_type_of_player):
         return Player('gosho') if number_representing_type_of_player == ONE_KEY else PremiumPlayer('pesho', 19)
-
-
-class PlayerControllers:
-    pass
-
-
-class PremiumPlayerControllers:
-    pass
-
-
-class WordControllers:
-    def get_random_word(self):
-        return random.choice(WORDS)
