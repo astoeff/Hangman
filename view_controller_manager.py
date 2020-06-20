@@ -17,8 +17,9 @@ class ViewControllerManager:
         player = self.application_controllers.create_player_instance(pressed_key)
         word = self.word_controllers.get_random_word()
         symbols_to_show = [word[0], word[len(word) - 1]]
-        already_used_symbols = symbols_to_show
-        while True:
+        already_used_symbols = ', '.join(symbols_to_show)
+        masked_word = None
+        while masked_word != word:
             masked_word = self.word_controllers.mask_word_without_symbols(word, symbols_to_show)
             pressed_key = self.application_views.player_move(masked_word, already_used_symbols, player.moves_left)
             self.application_controllers.check_if_key_for_exit_pressed(pressed_key)
@@ -28,6 +29,9 @@ class ViewControllerManager:
                 player.decrement_jokers_count()
                 joker_symbol = self.word_controllers.get_random_symbol_in_word_without_symbols(word, symbols_to_show)
                 symbols_to_show.append(joker_symbol)
+                already_used_symbols += ', ' + joker_symbol
             else:
-
-                player.decrement_moves_left()
+                if chr(pressed_key[0]) not in already_used_symbols:
+                    already_used_symbols += ', ' + chr(pressed_key[0])
+                    symbols_to_show.append(chr(pressed_key[0]))
+                    player.decrement_moves_left()

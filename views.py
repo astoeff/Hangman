@@ -14,6 +14,6 @@ class ApplicationViews:
         return get_character_from_console_until_key_in_list_pressed([ONE_KEY, TWO_KEY, ESCAPE_KEY])
 
     def player_move(self, word_masked, already_used_symbols, moves_left):
-        content = f'Moves left: {moves_left}\nAlready used symbols: {already_used_symbols}'
+        content = f'Moves left: {moves_left}\nAlready used symbols: {already_used_symbols}\n\nPress ESC to quit'
         print_heading_with_content(word_masked, content)
         return get_character_from_console_until_key_in_list_pressed(MOVE_CORRECT_KEYS)
