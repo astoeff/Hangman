@@ -8,3 +8,6 @@ class WordControllers:
 
     def mask_word_without_symbols(self, word, symbols):
         return ''.join([s if s in symbols else MASK_SYMBOL for s in word])
+
+    def get_random_symbol_in_word_without_symbols(self, word, symbols):
+        return random.choice([s for s in word if s not in symbols])
