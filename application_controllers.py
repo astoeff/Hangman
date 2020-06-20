@@ -8,4 +8,4 @@ class ApplicationControllers:
             raise SystemExit
 
     def create_player_instance(self, number_representing_type_of_player):
-        return Player('gosho') if number_representing_type_of_player == ONE_KEY else PremiumPlayer('pesho', 19)
+        return Player() if number_representing_type_of_player == ONE_KEY else PremiumPlayer()

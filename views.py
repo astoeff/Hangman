@@ -1,6 +1,6 @@
 from constants import (WELCOME_TEXT, CONTINUE_AND_EXIT_COMMAND_TEXT,
                        ENTER_KEY, ESCAPE_KEY, CHOOSE_PLAYER_TYPE_TEXT, EXIT_COMMAND_TEXT,
-                       ONE_KEY, TWO_KEY, MOVE_CORRECT_KEYS, LOST_GAME_TEXT, WIN_GAME_TEXT)
+                       ONE_KEY, TWO_KEY, MOVE_CORRECT_KEYS)
 from utils import get_character_from_console_until_key_in_list_pressed, print_heading_with_content
 
 
@@ -18,8 +18,6 @@ class ApplicationViews:
         print_heading_with_content(word_masked, content)
         return get_character_from_console_until_key_in_list_pressed(MOVE_CORRECT_KEYS)
 
-    def lost_game(self):
-        print_heading_with_content(LOST_GAME_TEXT)
-
-    def won_game(self):
-        print_heading_with_content(WIN_GAME_TEXT)
+    def result_from_game(self, word, heading):
+        content = f'The word was: {word}'
+        print_heading_with_content(heading, content)
