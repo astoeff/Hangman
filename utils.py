@@ -9,11 +9,12 @@ def clear_screen():
     subprocess.call('clear')
 
 
-def print_heading_with_content(heading, content):
+def print_heading_with_content(heading, content=None):
     clear_screen()
     print(colored(heading, HEADING_TEXT_COLOR).center(os.get_terminal_size().columns))
-    print('\n')
-    print(content)
+    if content:
+        print('\n')
+        print(content)
 
 
 def get_character_from_console_until_key_in_list_pressed(keys, input_text=None):

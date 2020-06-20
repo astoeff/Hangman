@@ -18,9 +18,8 @@ class ViewControllerManager:
         word = self.word_controllers.get_random_word()
         symbols_to_show = [word[0], word[len(word) - 1]]
         already_used_symbols = ', '.join(symbols_to_show)
-        masked_word = None
-        while masked_word != word:
-            masked_word = self.word_controllers.mask_word_without_symbols(word, symbols_to_show)
+        masked_word = self.word_controllers.mask_word_without_symbols(word, symbols_to_show)
+        while masked_word != word and player.moves_left != 0:
             pressed_key = self.application_views.player_move(masked_word, already_used_symbols, player.moves_left)
             self.application_controllers.check_if_key_for_exit_pressed(pressed_key)
             player_controller = player.get_controller()
@@ -35,3 +34,8 @@ class ViewControllerManager:
                     already_used_symbols += ', ' + chr(pressed_key[0])
                     symbols_to_show.append(chr(pressed_key[0]))
                     player.decrement_moves_left()
+            masked_word = self.word_controllers.mask_word_without_symbols(word, symbols_to_show)
+        if player.moves_left == 0:
+            self.application_views.lost_game()
+        else:
+            self.application_views.won_game()
